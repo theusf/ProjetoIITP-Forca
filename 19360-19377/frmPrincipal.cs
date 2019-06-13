@@ -34,9 +34,14 @@ namespace apPrincipal
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            CenterToScreen();
+        }
+
+        private void sAIRToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Close();
             
-
-
         }
     }
 }

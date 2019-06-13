@@ -21,3 +21,15 @@ C:\Users\u19377\Desktop\19360-19377\19360-19377\obj\Debug\19360-19377.csproj.Cor
 C:\Users\u19377\Desktop\19360-19377\19360-19377\obj\Debug\19360-19377.exe
 C:\Users\u19377\Desktop\19360-19377\19360-19377\obj\Debug\19360-19377.pdb
 C:\Users\u19377\Desktop\19360-19377\19360-19377\obj\Debug\apPrincipal.Cadastro.resources
+C:\Users\u19377\Desktop\ProjetoIITP-Forca-master\19360-19377\bin\Debug\19360-19377.exe.config
+C:\Users\u19377\Desktop\ProjetoIITP-Forca-master\19360-19377\bin\Debug\19360-19377.exe
+C:\Users\u19377\Desktop\ProjetoIITP-Forca-master\19360-19377\bin\Debug\19360-19377.pdb
+C:\Users\u19377\Desktop\ProjetoIITP-Forca-master\19360-19377\obj\Debug\19360-19377.csprojResolveAssemblyReference.cache
+C:\Users\u19377\Desktop\ProjetoIITP-Forca-master\19360-19377\obj\Debug\apPrincipal.Cadastro.resources
+C:\Users\u19377\Desktop\ProjetoIITP-Forca-master\19360-19377\obj\Debug\apPrincipal.Forca.resources
+C:\Users\u19377\Desktop\ProjetoIITP-Forca-master\19360-19377\obj\Debug\apPrincipal.frmPrincipal.resources
+C:\Users\u19377\Desktop\ProjetoIITP-Forca-master\19360-19377\obj\Debug\_19360_19377.Properties.Resources.resources
+C:\Users\u19377\Desktop\ProjetoIITP-Forca-master\19360-19377\obj\Debug\19360-19377.csproj.GenerateResource.Cache
+C:\Users\u19377\Desktop\ProjetoIITP-Forca-master\19360-19377\obj\Debug\19360-19377.csproj.CoreCompileInputs.cache
+C:\Users\u19377\Desktop\ProjetoIITP-Forca-master\19360-19377\obj\Debug\19360-19377.exe
+C:\Users\u19377\Desktop\ProjetoIITP-Forca-master\19360-19377\obj\Debug\19360-19377.pdb

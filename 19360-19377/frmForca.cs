@@ -23,8 +23,17 @@ namespace apPrincipal
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dlgAbrir.Title = "Escolha o arquivo texto para o jogo"; 
-            if (dlgAbrir.ShowDialog() == DialogResult.OK) 
+            dlgAbrir.Title = "Escolha o arquivo texto para o jogo";
+
+            bool SelecionouArquivo = false;
+
+
+            while (!(SelecionouArquivo))
+            {
+                SelecionouArquivo = dlgAbrir.ShowDialog() == DialogResult.OK;
+            }
+
+            if (SelecionouArquivo) 
             {
                 vetor.LerDados(dlgAbrir.FileName); // ler os dados na classe vetor passando como parâmetro o nome do arquivo aberto
             }
@@ -361,6 +370,11 @@ namespace apPrincipal
         }
 
         private void tmrAgora_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelTeclado_Paint(object sender, PaintEventArgs e)
         {
 
         }

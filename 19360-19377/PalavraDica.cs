@@ -30,7 +30,7 @@ using System.Threading.Tasks;
         }
 
     public string PalavraUsada { get => palavraUsada; set => palavraUsada = value; } // acessam as palavras utilizadas
-        public string DicaUsada { get => dicaUsada; set => dicaUsada = value; }  //sem os gets e os sets, as strings
+     public string DicaUsada { get => dicaUsada; set => dicaUsada = value; }  //sem os gets e os sets, as strings
                                                                                  //poderiam ser modificadas fora da classe
 
     public override String ToString()
@@ -42,7 +42,7 @@ using System.Threading.Tasks;
 
     public String ParaArquivo()
     {
-        return $"{palavraUsada,15}{dicaUsada,99}";
+        return $"{palavraUsada,15}{dicaUsada,100}" ;
     }
 
 

@@ -27,15 +27,21 @@ namespace apPrincipal
                 if (item is ToolStripButton)
                     (item as ToolStripButton).ImageIndex = indice++;
 
-            if (dlgAbrir.ShowDialog() == DialogResult.OK)
+            bool SelecionouArquivo = false;
+
+
+            while (!(SelecionouArquivo))
             {
-                asPalavras = new VetPalavraCadastro(20);
-                asPalavras.LerDados(dlgAbrir.FileName);
-
-                asPalavras.PosicionarNoInicio();
-                AtualizarTela();
-
+               SelecionouArquivo = dlgAbrir.ShowDialog() == DialogResult.OK;
             }
+
+            asPalavras = new VetPalavraCadastro(20);
+            asPalavras.LerDados(dlgAbrir.FileName);
+
+            asPalavras.PosicionarNoInicio();
+            AtualizarTela();
+
+
         }
 
         public void LimparTela()
@@ -161,13 +167,22 @@ namespace apPrincipal
                 asPalavras.PosicaoAtual = ondeIncluir;
                 AtualizarTela();
             }
-            /*else
+            else
                 if (asPalavras.SituacaoAtual == Situacao.editando)
             {
 
-                var FuncAlterado = new PalavraDica(
+                var FuncAlterado = new PalavraDica(txtPalavra.Text, txtDica.Text);
+                asPalavras[asPalavras.PosicaoAtual].DicaUsada = FuncAlterado.DicaUsada;
+                asPalavras[asPalavras.PosicaoAtual].PalavraUsada = FuncAlterado.PalavraUsada;
+                MessageBox.Show("Palavra alterada");
+                asPalavras.SituacaoAtual = Situacao.navegando;
 
-            }*/
+                asPalavras.PosicionarNoInicio();
+                AtualizarTela();
+
+            }
+
+            
         }
 
         /* private void btnOrdenar_Click(object sender, EventArgs e)

@@ -3,8 +3,8 @@ júpiter        Quinto planeta do sistema solar
 barney         Dinossauro roxo de série infantil                                                                   
 ponte preta    Time de futebol mais antigo do Brasil                                                               
 pelé           Único jogador a ser tricampeão da Copa do Mundo                                                     
-miguel do carmoPrimeiro jogador negro no futebol brasileiro                                                        
-cruzeiro do sulConstelação que forma uma cruz                                                                      
+miguel         Primeiro jogador negro no futebol brasileiro                                                        
+cruzeiro do    Constelação que forma uma cruz                                                                      
 elon musk      Fundador da Tesla                                                                                   
 bill gates     Fundador da Microsoft                                                                               
 moisés         Abriu o mar vermelho                                                                                
@@ -97,4 +97,4 @@ hidrogênio     Elemento mais leve da tabela periódica
 coala          Animal símbolo da Austrália                                                                         
 nu             Despido                                                                                             
 rupia          Moeda usada na índia                                                                                
-pão            Feito de trigo                                                                                      
+           bola         professor                                                                                  

@@ -406,6 +406,7 @@
             this.panelTeclado.Size = new System.Drawing.Size(316, 103);
             this.panelTeclado.TabIndex = 69;
             this.panelTeclado.Click += new System.EventHandler(this.btnClick);
+            this.panelTeclado.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTeclado_Paint);
             // 
             // btnZ
             // 
