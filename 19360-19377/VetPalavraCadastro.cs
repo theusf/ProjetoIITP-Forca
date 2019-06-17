@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 public enum Situacao
 { navegando,inlcuindo,editando,procurando,excluindo}
-class VetPalavraCadastro
+class VetCadastro
 {
     PalavraDica[] dados = null; // dados é vetor com 10 posições
     int qtosDados;       // controla a quantidade de posições em uso
@@ -25,7 +25,7 @@ class VetPalavraCadastro
 
     }
 
-    public VetPalavraCadastro(int tamanhoInicial)
+    public VetCadastro(int tamanhoInicial)
     {
         dados = new PalavraDica[tamanhoInicial]; // dados é vetor com 10 posições
         qtosDados = 0;         // controla a quantidade de posições em uso
@@ -145,12 +145,7 @@ class VetPalavraCadastro
 
     return achouIgual;
   }
-  public void Listar(ListBox lista)
-  {
-    lista.Items.Clear();
-    for (int indice = 0; indice < qtosDados; indice++)
-      lista.Items.Add($"[{indice,2}] - {dados[indice]}");
-  }
+
 
     public void Listar(TextBox lista)
     {

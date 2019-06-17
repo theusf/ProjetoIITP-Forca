@@ -19,7 +19,8 @@ using System.Threading.Tasks;
         public PalavraDica(string linha) // são lidos e divididos em strings a palavra e sua respectiva dica
         {
             palavraUsada = linha.Substring(inicioPalavra, tamanhoPalavra);
-            dicaUsada = linha.Substring(inicioDica, tamanhoDica);
+            
+            dicaUsada = linha.Substring(inicioDica);
         }
 
         public PalavraDica(string pala, string dic)
@@ -35,14 +36,14 @@ using System.Threading.Tasks;
 
     public override String ToString()
     {
-        return palavraUsada.ToString().PadLeft(tamanhoPalavra, '0') + "  " +
+        return palavraUsada.ToString().PadLeft(tamanhoPalavra, ' ') + "  " +
                 dicaUsada.ToString().PadLeft(tamanhoDica, ' ');
 
     }
 
     public String ParaArquivo()
     {
-        return $"{palavraUsada,15}{dicaUsada,100}" ;
+        return $"{palavraUsada.PadRight(15,' ')}{dicaUsada.PadRight(100,' ')}" ;
     }
 
 

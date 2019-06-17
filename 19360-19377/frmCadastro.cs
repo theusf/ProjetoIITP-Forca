@@ -17,7 +17,7 @@ namespace apPrincipal
             InitializeComponent();
         }
 
-        VetPalavraCadastro asPalavras = null;
+        VetCadastro asPalavras = null;
         private void FrmFunc_Load(object sender, EventArgs e)
         {
 
@@ -35,7 +35,7 @@ namespace apPrincipal
                SelecionouArquivo = dlgAbrir.ShowDialog() == DialogResult.OK;
             }
 
-            asPalavras = new VetPalavraCadastro(20);
+            asPalavras = new VetCadastro(100);
             asPalavras.LerDados(dlgAbrir.FileName);
 
             asPalavras.PosicionarNoInicio();
@@ -48,19 +48,23 @@ namespace apPrincipal
         {
             txtPalavra.Clear();
             txtDica.Clear();
-
-
-
         }
+
+
         private void AtualizarTela()
         {
             if (asPalavras.EstaVazio())
                 LimparTela();
             else
             {
-                PalavraDica qualPalavra = asPalavras[asPalavras.PosicaoAtual];
-                txtDica.Text = qualPalavra.DicaUsada + "";
-                txtPalavra.Text = qualPalavra.PalavraUsada + "";
+                //PalavraDica qualPalavra = asPalavras[asPalavras.PosicaoAtual];
+
+                string palavra = "", dica = "";
+            
+                asPalavras.AcessarPalavraEDica(asPalavras.PosicaoAtual, ref palavra, ref dica);
+
+                txtDica.Text = dica;
+                txtPalavra.Text = palavra;
 
                 stlbMensagem.Text = "Registro " + (asPalavras.PosicaoAtual + 1) + "/" + asPalavras.Tamanho;
 
@@ -101,7 +105,7 @@ namespace apPrincipal
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            asPalavras.SituacaoAtual = Situacao.inlcuindo;
+            asPalavras.situacaoAtual = Situacao.inlcuindo;
             LimparTela();
             stlbMensagem.Text = "Digite a nova matricula";
             txtPalavra.Focus();
@@ -120,13 +124,14 @@ namespace apPrincipal
                 var palavr = new PalavraDica(txtPalavra.Text, "");
                 ondeIncluir = -1;
 
-                if (asPalavras.SituacaoAtual == Situacao.inlcuindo)
+                if (asPalavras.situacaoAtual == Situacao.inlcuindo)
                 {
                     if (asPalavras.ExisteSequencial(palavr, ref ondeIncluir))
                     {
 
                         asPalavras.SituacaoAtual = Situacao.navegando;
                         AtualizarTela();
+           
                     }
                     else
                     {
@@ -145,11 +150,13 @@ namespace apPrincipal
                         MessageBox.Show("Esse já existe");
                         AtualizarTela();
                     }
-                    else
+                    /*else
                     {
 
                         MessageBox.Show("Matricula não encontrada");
-                    }
+                    }*/
+
+
 
 
                 }
@@ -163,7 +170,7 @@ namespace apPrincipal
             if (asPalavras.SituacaoAtual == Situacao.inlcuindo)
             {
                 var novoFunc = new PalavraDica(txtPalavra.Text, txtDica.Text);
-                asPalavras.Incluir(novoFunc, ondeIncluir);
+                asPalavras.IncluirAposFim(novoFunc);
                 asPalavras.PosicaoAtual = ondeIncluir;
                 AtualizarTela();
             }
@@ -172,8 +179,14 @@ namespace apPrincipal
             {
 
                 var FuncAlterado = new PalavraDica(txtPalavra.Text, txtDica.Text);
-                asPalavras[asPalavras.PosicaoAtual].DicaUsada = FuncAlterado.DicaUsada;
-                asPalavras[asPalavras.PosicaoAtual].PalavraUsada = FuncAlterado.PalavraUsada;
+
+
+                //asPalavras[asPalavras.PosicaoAtual].DicaUsada = FuncAlterado.DicaUsada;
+                //asPalavras[asPalavras.PosicaoAtual].PalavraUsada = FuncAlterado.PalavraUsada;
+
+               asPalavras.EditarPalavraEDica(FuncAlterado);
+
+
                 MessageBox.Show("Palavra alterada");
                 asPalavras.SituacaoAtual = Situacao.navegando;
 
@@ -247,6 +260,8 @@ namespace apPrincipal
         {
             asPalavras.Listar(txtLista);
         }
+
+       
     }
 
 }

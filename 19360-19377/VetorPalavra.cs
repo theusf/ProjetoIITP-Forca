@@ -6,18 +6,125 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 
 
-    class VetorPalavra
+
+public enum Situacao
+{ navegando, inlcuindo, editando, procurando, excluindo }
+
+namespace apPrincipal
+{
+    class VetCadastro
     {
+
+
+
+
         int tamanhoMaximo;  // tamanho físico do vetor dados
         int qtsDesafios;      // tamanho lógico do vetor dados
         private PalavraDica[] desafio;
         string[] vetorCaracteres = new string[15];
+        int posicaoAtual;
+        public Situacao situacaoAtual;
 
-        public VetorPalavra(int tamanhoDesejado)
+
+        void Expandir()
+        {
+            PalavraDica[] vetorMaior = new PalavraDica[desafio.Length + 10];
+            for (int indice = 0; indice < desafio.Length; indice++)
+                vetorMaior[indice] = desafio[indice];
+            desafio = vetorMaior;
+        }
+
+        public Situacao SituacaoAtual
+        {
+            get => situacaoAtual;
+            set => situacaoAtual = value;
+        }
+
+
+        public void IncluirAposFim(PalavraDica novoValor)
+        {
+            if (qtsDesafios >= desafio.Length)
+                Expandir();
+
+            desafio[qtsDesafios] = novoValor;
+            qtsDesafios++;
+        }
+
+
+        public void PosicionarNoUltimo()
+        {
+
+            posicaoAtual = qtsDesafios - 1;
+
+        }
+
+        public void VoltarPosicao()
+        {
+
+            if (posicaoAtual > 1)
+                posicaoAtual--;
+            else
+                PosicionarNoInicio();
+        }
+        public void AvancarPosicao()
+        {
+
+            if (posicaoAtual < qtsDesafios - 1)
+                posicaoAtual++;
+            else
+                PosicionarNoInicio();
+        }
+        public void PosicionarNoInicio()
+        {
+
+            posicaoAtual = 0;
+
+        }
+
+        public bool EstaVazio()
+        {
+            if (qtsDesafios == -1)
+                return true;
+            else
+                return false;
+        }
+
+
+
+        public void GravacaoEmDisco(string nomeArquivo)
+        {
+            var arqFuncionarios = new StreamWriter(nomeArquivo);
+            for (int i = 0; i < qtsDesafios; i++)
+                arqFuncionarios.WriteLine(desafio[i].ParaArquivo());
+            arqFuncionarios.Close();
+        }
+
+
+        public bool ExisteSequencial(PalavraDica funcProc, ref int indice)
+        {
+            bool achouIgual = false;
+            indice = 0; // para começar a percorrer o vetor dados
+            while (!achouIgual && indice < qtsDesafios)
+            {
+                if (desafio[indice].PalavraUsada.Contains(funcProc.PalavraUsada)) 
+                    achouIgual = true;
+                else
+                    indice++;
+            }
+
+            return achouIgual;
+        }
+        public VetCadastro(int tamanhoDesejado)
         {
             desafio = new PalavraDica[tamanhoDesejado];
             qtsDesafios = 0;
             tamanhoMaximo = tamanhoDesejado;
+        }
+
+        public int Tamanho
+        {
+            get => qtsDesafios;
+
         }
 
         public void LerDados(string nomeArq)   // ler de um arquivo texto
@@ -62,18 +169,13 @@ using System.Collections.Generic;
 
         }
 
-        public void Listar(ListBox lista)
-        {
-            lista.Items.Clear();
-            for (int indice = 0; indice < qtsDesafios; indice++)
-                lista.Items.Add(desafio[indice]);
-        }
-        public void Listar(ComboBox lista)
-        {
-            lista.Items.Clear();
-            for (int indice = 0; indice < qtsDesafios; indice++)
-                lista.Items.Add(desafio[indice]);
-        }
+        /* public void Listar(ListBox lista)
+         {
+             lista.Items.Clear();
+             for (int indice = 0; indice < qtsDesafios; indice++)
+                 lista.Items.Add(desafio[indice]);
+         }*/
+
         public void Listar(TextBox lista)
         {
             lista.Multiline = true;
@@ -112,7 +214,11 @@ using System.Collections.Generic;
 
         int qtosCaracteres = 0;
 
+        public void EditarPalavraEDica(PalavraDica nova)
+        {
+            desafio[posicaoAtual] = nova;
 
+        }
 
         public void SepararDigito(string palavra, DataGridView qualDgv) //função que separará a palavra em jogo por letras
         {
@@ -144,5 +250,13 @@ using System.Collections.Generic;
             qtsOcorrencias = indice; //quantas vezes a  letra apareceu
             return posicoes; // o vetor 'posicoes' retornado, terá o valor dos carácteres que ocorreram a letra.
         }
+
+
+        public int PosicaoAtual
+        {
+            get => posicaoAtual;
+            set => posicaoAtual = value;
+        }
     }
+}
 

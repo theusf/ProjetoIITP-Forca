@@ -13,12 +13,12 @@ namespace apPrincipal
 {
     public partial class Forca : Form
     {
-        VetorPalavra vetor;
+        VetCadastro vetor;
 
         public Forca()
         {
             InitializeComponent();
-            vetor = new VetorPalavra(100); 
+            vetor = new VetCadastro(100); 
         }
 
         private void Form1_Load(object sender, EventArgs e)
